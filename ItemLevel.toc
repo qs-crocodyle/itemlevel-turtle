@@ -1,0 +1,7 @@
+## Interface: 11200
+## Title: |cff33ffccItem|cffffffffLevel
+## Author: Shagu, 2015-2017
+## Notes: Display ItemLevel and Color, modified from ShaguScore
+## Version: 2.0
+ItemLevel.lua
+Database.lua
