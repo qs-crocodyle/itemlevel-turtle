@@ -66,7 +66,6 @@ ItemLevel.CharacterFrame:SetWidth(200)
 ItemLevel.CharacterFrame:SetHeight(50)
 ItemLevel.CharacterFrame:SetPoint("BOTTOM", 0, 0)
 ItemLevel.CharacterFrame.text = ItemLevel.CharacterFrame:CreateFontString("Status", "LOW", "GameFontNormal")
-ItemLevel.CharacterFrame.text:SetPoint("CENTER", 0, 0)
 
 ItemLevel.CharacterFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 ItemLevel.CharacterFrame:RegisterEvent("UNIT_NAME_UPDATE")
@@ -79,6 +78,13 @@ ItemLevel.CharacterFrame:SetScript("OnEvent", function()
     ItemLevel.CharacterFrame.text:SetTextColor(r, g, b)
   end
 end)
+
+--- BetterCharacterStats compatibility check
+if BCSFrame then
+  ItemLevel.CharacterFrame.text:SetPoint("CENTER", 0, 20)
+else
+  ItemLevel.CharacterFrame.text:SetPoint("CENTER", 0, 0)
+end
 
 -- functions
 function ItemLevel:round(input, places)
