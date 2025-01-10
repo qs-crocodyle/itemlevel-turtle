@@ -6,6 +6,7 @@ This AddOn is modified from **[Shaguscore](https://github.com/shagu/ShaguScore)*
 
 ## Installation
 
-1. Download the folder and rename it to "ItemLevel"
-2. Copy "ItemLevel" to Wow-Directory\Interface\AddOns
+Option 1: Download the folder and copy it to Wow-Directory\Interface\AddOns
+
+Option 2: Use [GitAddonsManager](https://woblight.gitlab.io/overview/gitaddonsmanager/). Click "+" on the menu and add this repo directly -- https://github.com/qs-crocodyle/itemlevel-turtle.git It is very convenient to keep your addons up to date with GitAddonsManager (simply click the upward arrow on the menu). 
 
