@@ -54,11 +54,10 @@ local function IsEquip()
 	return false
 end
 
-local function Add_ItemLevelLine(itemID, itemLevel)
-	if not itemID then return end
-	
-	if IsEquip() and itemLevel and itemLevel > 0 then
+local function Add_ItemLevelLine(itemLevel)
+	if itemLevel > 0 then
 		if ItemRefTooltip:IsVisible() then
+			ItemRefTooltip:AddLine("ItemLevel: " .. itemLevel, 1, 1, 0)
 			ItemRefTooltip:Show()
 		else
 			GameTooltip:AddLine("ItemLevel: " .. itemLevel, 1, 1, 0)
@@ -81,7 +80,19 @@ ItemLevel:SetScript("OnShow", function()
 	if GameTooltip.itemLink then
 		local _, _, itemID = string.find(GameTooltip.itemLink, "item:(%d+)")
 		local itemLevel = ItemLevel.ilvl_database[tonumber(itemID)] or 0
-		Add_ItemLevelLine(itemID, itemLevel)
+		if IsEquip() and itemID then
+			if itemLevel == 0 then -- search by name and get new item level
+				local itemName, _, _ = GetItemInfo(itemID)
+				for realID, engName in pairs(ItemLevel.item_database) do
+					if engName == itemName then
+						local newItemLevel = ItemLevel.ilvl_database[realID] or 0
+						itemLevel = newItemLevel
+						break
+					end
+				end
+			end 
+			Add_ItemLevelLine(itemLevel)
+		end
 	end
 end)
 
@@ -93,7 +104,7 @@ hooksecurefunc("SetItemRef", function(link, button)
 	if ItemRefTooltip:IsVisible() then
 		local _, _, itemID = string.find(link, "item:(%d+)")
 		local itemLevel = ItemLevel.ilvl_database[tonumber(itemID)] or 0
-		Add_ItemLevelLine(itemID, itemLevel)
+		Add_ItemLevelLine(itemLevel)
 	end
 end)
 
