@@ -57,7 +57,7 @@ end
 local function Add_ItemLevelLine(itemLevel)
 	if itemLevel > 0 then
 		if ItemRefTooltip:IsVisible() then
-			ItemRefTooltip:AddLine("ItemLevel: " .. itemLevel, 1, 1, 0)
+			-- ItemRefTooltip:AddLine("ItemLevel: " .. itemLevel, 1, 1, 0)
 			ItemRefTooltip:Show()
 		else
 			GameTooltip:AddLine("ItemLevel: " .. itemLevel, 1, 1, 0)
