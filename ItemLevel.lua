@@ -100,14 +100,6 @@ ItemLevel:SetScript("OnHide", function()
 	GameTooltip.itemLink = nil
 end)
 
-hooksecurefunc("SetItemRef", function(link, button)
-	if ItemRefTooltip:IsVisible() then
-		local _, _, itemID = string.find(link, "item:(%d+)")
-		local itemLevel = ItemLevel.ilvl_database[tonumber(itemID)] or 0
-		Add_ItemLevelLine(itemLevel)
-	end
-end)
-
 if IsAddOnLoaded("StatCompare") then
 	StatCompareSelfFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 	StatCompareSelfFrame:RegisterEvent("UNIT_INVENTORY_CHANGED")
